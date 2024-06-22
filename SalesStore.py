@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.figure_factory as ff
 
 df = pd.read_csv('Sales_Store_Preprocessed.csv')
 st.title('Sales Store Analysis')
@@ -21,5 +20,5 @@ fig1 = px.pie(df, 'Year', 'Profit', color_discrete_sequence=px.colors.qualitativ
 st.plotly_chart(fig1)
 
 st.header('Profit')
-fig2 = ff.create_distplot( [df['Profit']], ['Profit'], show_hist=False )
+fig2 = px.histogram( df, 'Profit', color_discrete_sequence=px.colors.qualitative.Alphabet_r)
 st.plotly_chart(fig2)
